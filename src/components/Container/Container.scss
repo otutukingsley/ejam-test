@@ -1,0 +1,30 @@
+:root {
+  --container-max-width: 100%;
+  --container-padding: 30px;
+
+  @include breakpoint(portrait) {
+    --container-max-width: 100%;
+  }
+  
+  @include breakpoint(landscape) {
+    --container-max-width: 960px;
+  }
+
+  @include breakpoint(desktop) {
+    --container-max-width: 1100px;
+    --container-padding: 36px;
+  }
+
+  @include breakpoint(wide) {
+    --container-max-width: 1300px;
+  }
+}
+
+.container {
+  max-width: var(--container-max-width);
+  width: 100%;
+  padding-right: var(--container-padding);
+  padding-left: var(--container-padding);
+  margin-right: auto;
+  margin-left: auto;
+}
