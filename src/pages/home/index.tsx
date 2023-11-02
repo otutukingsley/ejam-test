@@ -1,6 +1,8 @@
 import React, { useCallback, useRef } from 'react';
 import PageContainer from 'components/Container/Container';
 import Image from 'next/image';
+import classnames from 'classnames';
+import Link from 'next/link';
 
 import guranteeIcon from './assets/ejam-checkmark-starburst.svg';
 import deliveryIcon from './assets/ejam-truck-light.svg';
@@ -11,7 +13,7 @@ import arrowPrev from './assets/ejam-arrow-left.svg';
 import clarifonIcon from './assets/clarifon-logo.svg';
 import notionIcon from './assets/notion-logo.svg';
 import mcfeeIcon from './assets/mcfee-logo.svg';
-import Link from 'next/link';
+import checkMark from './assets/check-mark.svg';
 
 const ejamHeaderContent = [
   {
@@ -49,6 +51,29 @@ const Home = () => {
     container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' });
   }, []);
 
+  const indicators = [
+    {
+      id: 1,
+      status: 'done',
+      text: 'Cart Review',
+    },
+    {
+      id: 2,
+      status: 'done',
+      text: 'Checkout',
+    },
+    {
+      id: 3,
+      status: 'ongoing',
+      text: 'Special Offer',
+    },
+    {
+      id: 4,
+      status: 'pending',
+      text: 'Confirmation',
+    },
+  ];
+
   return (
     <div className="app-wrapper">
       <header id="main-header">
@@ -80,14 +105,14 @@ const Home = () => {
             </div>
             <div className="header-group-btn-container">
               <button
-                className="btn header-group--prev-btn header-group--btn"
+                className="btn header-group--prev-btn btn-none"
                 type="button"
                 onClick={ () => handlePrevClick() }
               >
                 <Image alt="icon-image" src={ arrowPrev } />
               </button>
               <button
-                className="btn header-group--next-btn header-group--btn"
+                className="btn header-group--next-btn btn-none"
                 type="button"
                 onClick={ () => handleNextClick() }
               >
@@ -126,6 +151,51 @@ const Home = () => {
           </PageContainer>
         </div>
       </header>
+
+      <section className="order-progress">
+        <PageContainer>
+          <div className="order-progress-title-section">
+            <h3 className="order-progress-title">
+              Wait ! your order in progress.
+            </h3>
+            <p className="order-progress-subtitle">
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+            </p>
+          </div>
+          <div className="order-progress-indicators">
+            <>
+              { indicators.map(item => (
+                <div key={ item.id } className="progress-indicator-content">
+                  <div
+                    className={ classnames('progress-indicator', {
+                      'progress-green': item.status === 'done',
+                      'progress-blue': item.status === 'ongoing',
+                      'progress-outline-blue': item.status === 'pending',
+                    }) }
+                  >
+                    { item.status === 'done' ? (
+                      <Image
+                        alt="done indicator"
+                        src={ checkMark }
+                        className="progress-done-indicator"
+                      />
+                    ) : (
+                      <span className="progress-undone">{ item.id }</span>
+                    ) }
+                  </div>
+                  <div
+                    className={ classnames('order-progress-indicator-text', {
+                      'progress-ongoing': item.status === 'ongoing',
+                    }) }
+                  >
+                    Step { item.id }: { item.text }
+                  </div>
+                </div>
+              )) }
+            </>
+          </div>
+        </PageContainer>
+      </section>
     </div>
   );
 };

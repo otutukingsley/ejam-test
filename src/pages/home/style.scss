@@ -27,14 +27,6 @@ header#main-header {
     height: 100%;
   }
 
-  .header-group--btn {
-    background-color: transparent;
-    color: inherit;
-    padding: 0;
-    border-radius: 0;
-    background: none;
-  }
-
   .header-group-btn-container {
     position: absolute;
     left: 0;
@@ -79,6 +71,14 @@ header#main-header {
   cursor: pointer;
   padding: 10px 15px;
   text-align: center;
+}
+
+.btn-none {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  background: none;
 }
 
 .header-group-wrapper {
@@ -182,7 +182,7 @@ header#main-header {
 }
 
 .lower-header-wrapper {
-  padding: 30px 0;
+  padding: 30px 0 20px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -201,17 +201,17 @@ header#main-header {
     .lower-header-mcfee-logo-link {
       display: inline-block;
       width: 88px;
-  
-      .mcfee-logo-static{
+
+      .mcfee-logo-static {
         width: 100%;
       }
     }
-  
+
     .lower-header-notion-logo-link {
       display: inline-block;
       width: 82px;
-  
-      .notion-logo-static{
+
+      .notion-logo-static {
         width: 100%;
       }
     }
@@ -221,8 +221,92 @@ header#main-header {
     display: inline-block;
     width: 192px;
 
-    .clarifon-logo-static{
+    .clarifon-logo-static {
       width: 100%;
+    }
+  }
+}
+
+.order-progress {
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+  position: relative;
+}
+
+.order-progress-title-section {
+  width: 100%;
+  text-align: center;
+  position: relative;
+
+  .order-progress-title {
+    color: #000;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+
+  .order-progress-subtitle {
+    color: #4d5254;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 100%;
+    text-transform: capitalize;
+  }
+}
+
+.order-progress-indicators {
+  width: 100%;
+  text-align: left;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+
+  .progress-indicator-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: stretch;
+    gap: 20px;
+    font-size: 20px;
+
+    .order-progress-indicator-text {
+      &.progress-ongoing {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .progress-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+
+    &.progress-green {
+      background-color: #85BF55;
+      border: 2px solid #85BF55;
+    }
+
+    &.progress-blue {
+      background-color: #2C7EF8;
+      border: 2px solid #2C7EF8;
+    }
+
+    &.progress-outline-blue {
+      border: 2px solid #2C7EF8;
+      color:  #2C7EF8;
     }
   }
 }
