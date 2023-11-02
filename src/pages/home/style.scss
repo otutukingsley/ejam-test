@@ -5,8 +5,21 @@
 header#main-header {
   width: 100vw;
   position: relative;
-  background-color: #252f3d;
+  background-color: #ffffff;
   color: #ffffff;
+
+  .upper-header {
+    width: 100%;
+    background-color: #252f3d;
+    color: #ffffff;
+    position: relative;
+  }
+
+  .lower-header {
+    width: 100%;
+    position: relative;
+    color: #000;
+  }
 
   .container {
     width: auto;
@@ -159,6 +172,57 @@ header#main-header {
       @include breakpoint(until-landscape) {
         justify-content: center;
       }
+
+      .header-list-item-icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+}
+
+.lower-header-wrapper {
+  padding: 30px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  .lower-header-partners-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: stretch;
+    gap: 20px;
+
+    .lower-header-mcfee-logo-link {
+      display: inline-block;
+      width: 88px;
+  
+      .mcfee-logo-static{
+        width: 100%;
+      }
+    }
+  
+    .lower-header-notion-logo-link {
+      display: inline-block;
+      width: 82px;
+  
+      .notion-logo-static{
+        width: 100%;
+      }
+    }
+  }
+
+  .lower-header-clarifon-logo-link {
+    display: inline-block;
+    width: 192px;
+
+    .clarifon-logo-static{
+      width: 100%;
     }
   }
 }
