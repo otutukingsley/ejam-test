@@ -6,6 +6,20 @@
   overflow-x: hidden;
 }
 
+footer#main-footer {
+  width: 100vw;
+  position: relative;
+  background-color: #252f3d;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+
+  .footer-wrapper {
+    padding: 24px 0;
+    width: 100%;
+  }
+}
+
 header#main-header {
   width: 100vw;
   position: relative;
@@ -537,7 +551,7 @@ header#main-header {
   gap: 7px;
   width: 100%;
 
-  span {
+  li {
     color: #fbbc04;
   }
 }
@@ -786,14 +800,14 @@ header#main-header {
         display: none;
       }
     }
-  }
 
-  .perks-ssl-encryption {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: stretch;
-    gap: 10px;
+    &.ssl-encryption {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: stretch;
+      gap: 10px;
+    }
   }
 
   .perks-payment-methods-static {
@@ -811,6 +825,14 @@ header#main-header {
       }
     }
   }
+}
+
+.ssl-encryption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+  gap: 10px;
 }
 
 .ordered-product-discount-claim-cta {
@@ -872,3 +894,4 @@ header#main-header {
     }
   }
 }
+

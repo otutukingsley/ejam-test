@@ -283,55 +283,53 @@ const Home = () => {
                     className="clarifon-ordered-product-static"
                   />
                 </div>
-                <div className="order-product-left-grid-reviews-wrapper">
-                  <>
-                    { customerReviews.map(review => (
-                      <div key={ review.id } className="customer-review-card">
-                        <div className="customer-review-details-wrapper">
-                          <div className="customer-image-wrapper">
-                            <Image
-                              alt="customer image"
-                              src={ review.image }
-                              className="customer-image-static"
-                            />
-                          </div>
-
-                          <div className="customer-review-details">
-                            <div className="review-rating">
-                              { Array.from({ length: 5 }, (_, index) => (
-                                <span key={ index }>
-                                  { index < review.rating ? '★' : '☆' }
-                                </span>
-                              )) }
-                            </div>
-                            <div className="customer-review-name-verified">
-                              <div className="customer-review-name">
-                                { review.name }
-                              </div>
-                              { review.verified && (
-                                <div className="verified-badge">
-                                  <span className="verified-badge-icon">
-                                    <Image
-                                      alt="verified batch"
-                                      src={ verifiedIco }
-                                      className="verified-image-static"
-                                    />
-                                  </span>
-                                  <span className="verified-badge-text">
-                                    Verified Customer
-                                  </span>
-                                </div>
-                              ) }
-                            </div>
-                          </div>
+                <ul className="order-product-left-grid-reviews-wrapper">
+                  { customerReviews.map(review => (
+                    <li key={ review.id } className="customer-review-card">
+                      <div className="customer-review-details-wrapper">
+                        <div className="customer-image-wrapper">
+                          <Image
+                            alt="customer image"
+                            src={ review.image }
+                            className="customer-image-static"
+                          />
                         </div>
-                        <div className="customer-review-comment">
-                          &#34;{ review.comment }&#34;
+
+                        <div className="customer-review-details">
+                          <ul className="review-rating">
+                            { Array.from({ length: 5 }, (_, index) => (
+                              <li key={ index }>
+                                { index < review.rating ? '★' : '☆' }
+                              </li>
+                            )) }
+                          </ul>
+                          <div className="customer-review-name-verified">
+                            <div className="customer-review-name">
+                              { review.name }
+                            </div>
+                            { review.verified && (
+                              <div className="verified-badge">
+                                <span className="verified-badge-icon">
+                                  <Image
+                                    alt="verified batch"
+                                    src={ verifiedIco }
+                                    className="verified-image-static"
+                                  />
+                                </span>
+                                <span className="verified-badge-text">
+                                  Verified Customer
+                                </span>
+                              </div>
+                            ) }
+                          </div>
                         </div>
                       </div>
-                    )) }
-                  </>
-                </div>
+                      <div className="customer-review-comment">
+                        &#34;{ review.comment }&#34;
+                      </div>
+                    </li>
+                  )) }
+                </ul>
               </div>
               <div className="ordered-product-right-grid">
                 <div className="ordered-product-right-grid-title">
@@ -366,13 +364,11 @@ const Home = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="review-rating">
+                    <ul className="review-rating">
                       { Array.from({ length: 5 }, (_, index) => (
-                        <span key={ index }>
-                          { index < productRating ? '★' : '☆' }
-                        </span>
+                        <li key={ index }>{ index < productRating ? '★' : '☆' }</li>
                       )) }
-                    </div>
+                    </ul>
                     <div className="ordered-product-in-stock">
                       <Image
                         alt="stock icon"
@@ -389,12 +385,9 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="ordered-product-reasons">
+                <ul className="ordered-product-reasons">
                   { reasons.map(reason => (
-                    <div
-                      key={ reason.id }
-                      className="ordered-product-reason-item"
-                    >
+                    <li key={ reason.id } className="ordered-product-reason-item">
                       <Image
                         alt="ordered product reason check"
                         src={ blueCheckMark }
@@ -404,9 +397,9 @@ const Home = () => {
                         dangerouslySetInnerHTML={ { __html: reason.reason } }
                         className="ordered-product-reason-text"
                       />
-                    </div>
+                    </li>
                   )) }
-                </div>
+                </ul>
                 <div className="ordered-product-discount-details">
                   <Image
                     alt="discount icon"
@@ -434,7 +427,7 @@ const Home = () => {
                       <div className="perks-free-shipping discount-claim-perks-text perks-free-item">
                         Free shipping
                       </div>
-                      <div className="perks-ssl-encryption perks-free-item">
+                      <div className="ssl-encryption perks-free-item">
                         <Image
                           alt="ssl icon"
                           src={ padLock }
@@ -444,9 +437,9 @@ const Home = () => {
                           Secure 256-bit SSL encryption
                         </span>
                       </div>
-                      <div className="perks-payment-methods-static perks-free-item">
+                      <ul className="perks-payment-methods-static perks-free-item">
                         { financeCards.map(financeCard => (
-                          <span
+                          <li
                             key={ financeCard.id }
                             className="perks-payment-method-static-wrapper"
                           >
@@ -455,9 +448,9 @@ const Home = () => {
                               src={ financeCard.icon }
                               className="perks-payment-method-image-static"
                             />
-                          </span>
+                          </li>
                         )) }
-                      </div>
+                      </ul>
                     </div>
                   </div>
                   <div className="ordered-product-no-discount">
@@ -488,6 +481,31 @@ const Home = () => {
           </div>
         </PageContainer>
       </section>
+
+      <footer id="main-footer">
+        <PageContainer>
+          <div className="footer-wrapper">
+            <div className="footer-copyright">
+              <div className="footer-copyright-dated">Copyright (c) 2023</div>
+              <div className="footer-copyright-email">
+                chineduotutu3@gmail.com
+              </div>
+            </div>
+            <div className="footer-ssl">
+              <div className="ssl-encryption">
+                <Image
+                  alt="ssl icon"
+                  src={ padLock }
+                  className="ssl-icon-image-static"
+                />
+                <span className="discount-claim-perks-text">
+                  Secure 256-bit SSL encryption
+                </span>
+              </div>
+            </div>
+          </div>
+        </PageContainer>
+      </footer>
     </div>
   );
 };
