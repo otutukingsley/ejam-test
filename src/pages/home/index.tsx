@@ -23,6 +23,14 @@ import blueCheckMark from './assets/blue-check-mark.svg';
 import percentIcon from './assets/percent-icon.svg';
 import whiteArrowRight from './assets/white-arrow-right.svg';
 import padLock from './assets/padlock.svg';
+import visaIcon from './assets/visa.svg';
+import amexIcon from './assets/amex.svg';
+import mastercardIcon from './assets/mastercard.svg';
+import applePayIcon from './assets/apple-pay.svg';
+import opayIcon from './assets/opay.svg';
+import googlepayIcon from './assets/google-pay.svg';
+import paypalIcon from './assets/paypal.svg';
+import orderGuranteeIcon from './assets/guarantee-icon.svg';
 
 const ejamHeaderContent = [
   {
@@ -71,6 +79,37 @@ const reasons = [
   {
     id: 3,
     reason: '<span>Perfect for every room</span> in all types of places. ',
+  },
+];
+
+const financeCards = [
+  {
+    id: 1,
+    icon: visaIcon,
+  },
+  {
+    id: 2,
+    icon: opayIcon,
+  },
+  {
+    id: 3,
+    icon: paypalIcon,
+  },
+  {
+    id: 4,
+    icon: mastercardIcon,
+  },
+  {
+    id: 5,
+    icon: googlepayIcon,
+  },
+  {
+    id: 6,
+    icon: applePayIcon,
+  },
+  {
+    id: 7,
+    icon: amexIcon,
   },
 ];
 
@@ -382,28 +421,66 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="ordered-product-discount-claim">
-                  <button className="btn btn-xl-green">
-                    yes - claim my discount
-                    <Image
-                      alt="claim discount arrow right"
-                      src={ whiteArrowRight }
-                      className="claim-discount-static"
-                    />
-                  </button>
-                  <div className="ordered-product-discount-claim-perks">
-                    <div className="perks-free-shipping discount-claim-perks-text">
-                      Free shipping
-                    </div>
-                    <div className="perks-ssl-encryption">
+                  <div className="ordered-product-discount-claim-cta">
+                    <button className="btn btn-xl-green">
+                      yes - claim my discount
                       <Image
-                        alt="ssl icon"
-                        src={ padLock }
-                        className="ssl-icon-image-static"
+                        alt="claim discount arrow right"
+                        src={ whiteArrowRight }
+                        className="claim-discount-static"
                       />
-                      <span className="discount-claim-perks-text">
-                        Secure 256-bit SSL encryption
-                      </span>
+                    </button>
+                    <div className="ordered-product-discount-claim-perks">
+                      <div className="perks-free-shipping discount-claim-perks-text perks-free-item">
+                        Free shipping
+                      </div>
+                      <div className="perks-ssl-encryption perks-free-item">
+                        <Image
+                          alt="ssl icon"
+                          src={ padLock }
+                          className="ssl-icon-image-static"
+                        />
+                        <span className="discount-claim-perks-text">
+                          Secure 256-bit SSL encryption
+                        </span>
+                      </div>
+                      <div className="perks-payment-methods-static perks-free-item">
+                        { financeCards.map(financeCard => (
+                          <span
+                            key={ financeCard.id }
+                            className="perks-payment-method-static-wrapper"
+                          >
+                            <Image
+                              alt="finance card icon"
+                              src={ financeCard.icon }
+                              className="perks-payment-method-image-static"
+                            />
+                          </span>
+                        )) }
+                      </div>
                     </div>
+                  </div>
+                  <div className="ordered-product-no-discount">
+                    <Link href="/">No thanks, I don’t want this.</Link>
+                  </div>
+                </div>
+                <div className="ordered-product-gurantee">
+                  <div className="ordered-product-gurantee-static-wrapper">
+                    <Image
+                      alt="gurantee icon"
+                      src={ orderGuranteeIcon }
+                      className="ordered-product-gurantee-static"
+                    />
+                  </div>
+
+                  <div className="ordered-product-gurantee-desc">
+                    If you are not completely thrilled with your Clarifion - We
+                    have a{ ' ' }
+                    <span className="ordered-product-gurantee-desc-bold">
+                      30 day satisfaction guarantee
+                    </span>
+                    . Please refer to our return policy at the bottom of the
+                    page for more details. Happy Shopping!
                   </div>
                 </div>
               </div>
