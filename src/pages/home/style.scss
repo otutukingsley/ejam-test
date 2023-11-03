@@ -25,6 +25,12 @@ footer#main-footer {
     font-weight: 300;
     line-height: 140%;
     gap: 16px;
+
+    @include breakpoint (until-portrait) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .footer-separator-pipe {
@@ -249,6 +255,10 @@ header#main-header {
   justify-content: space-between;
   align-items: center;
 
+  @include breakpoint(until-mobile) {
+    padding: 20px 0 10px;
+  }
+
   .lower-header-partners-wrapper {
     display: flex;
     flex-direction: row;
@@ -257,9 +267,17 @@ header#main-header {
     justify-content: stretch;
     gap: 20px;
 
+    @include breakpoint(until-mobile) {
+      gap: 10px;
+    }
+
     .lower-header-mcfee-logo-link {
       display: inline-block;
       width: 88px;
+
+      @include breakpoint (until-mobile) {
+        width: 50px;
+      }
 
       .mcfee-logo-static {
         width: 100%;
@@ -270,6 +288,10 @@ header#main-header {
       display: inline-block;
       width: 82px;
 
+      @include breakpoint (until-mobile) {
+        width: 50px;
+      }
+
       .notion-logo-static {
         width: 100%;
       }
@@ -279,6 +301,10 @@ header#main-header {
   .lower-header-clarifon-logo-link {
     display: inline-block;
     width: 192px;
+
+    @include breakpoint (until-mobile) {
+      width: 130px;
+    }
 
     .clarifon-logo-static {
       width: 100%;
@@ -292,6 +318,10 @@ header#main-header {
   margin-top: 10px;
   position: relative;
   margin-bottom: 61px;
+
+  @include breakpoint (until-portrait) {
+    margin-bottom: 31px;
+  }
 }
 
 .order-progress-title-section {
@@ -309,6 +339,7 @@ header#main-header {
 
     @include breakpoint(until-portrait) {
       font-size: 32px;
+      margin-bottom: 10px;
     }
   }
 
@@ -429,6 +460,14 @@ header#main-header {
   border-radius: 10px;
   background: #fafafa;
   text-align: left;
+
+  @include breakpoint(until-desktop) {
+    padding: 20px;
+  }
+
+  @include breakpoint(until-portrait) {
+    margin-top: 20px;
+  }
 }
 
 .ordered-product-grid {
@@ -443,6 +482,16 @@ header#main-header {
   column-gap: 40px;
   text-align: left;
   width: 100%;
+
+  @include breakpoint(until-desktop) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'image'
+      'details'
+      'reviews';
+    row-gap: 40px;
+  }
 }
 
 .title-area {
@@ -451,6 +500,15 @@ header#main-header {
   font-size: 32px;
   line-height: 140%;
   font-weight: 300;
+  text-align: left;
+
+  @include breakpoint(until-desktop) {
+    text-align: center;
+  }
+
+  @include breakpoint(until-portrait) {
+    font-size: 24px;
+  }
 
   .title-blue-text {
     color: #2c7ef8;
@@ -478,6 +536,10 @@ header#main-header {
   max-width: 575px;
   margin: 0 auto 0 0;
 
+  @include breakpoint(until-desktop) {
+    margin: 0 auto;
+  }
+
   .clarifon-ordered-product-static {
     width: 100%;
     height: 100%;
@@ -486,12 +548,15 @@ header#main-header {
 
 .reviews-area {
   grid-area: reviews;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(until-desktop) {
+    display: none;
+  }
 }
 
 .customer-review-card {
@@ -602,38 +667,72 @@ header#main-header {
 }
 
 .ordered-product-details-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 134px 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'product-image product-details'
+    'product-image product-details'
+    'product-image product-desc';
+  row-gap: 0;
+  column-gap: 24px;
+  text-align: left;
   width: 100%;
 
-  .ordered-product-image-wrapper {
-    width: 134px;
-    height: 134px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background-color: #2c7ef8;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .ordered-product-image-static {
-      width: 100%;
-    }
+  @include breakpoint(until-portrait) {
+    grid-template-columns: 80px 1fr;
+    grid-template-areas:
+      'product-image product-details'
+      'product-image product-details'
+      'product-desc product-desc';
+    row-gap: 16px;
   }
 }
 
-.ordered-product-details {
+.product-image-area {
+  grid-area: product-image;
+  width: 134px;
+  height: 134px;
+  border-radius: 10px;
+  background-color: #2c7ef8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(until-portrait) {
+    width: 80px;
+    height: 80px;
+  }
+
+  .ordered-product-image-static {
+    width: 100%;
+  }
+}
+
+.product-details-area {
+  grid-area: product-details;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 7px;
   width: 100%;
+}
+
+.product-desc-area {
+  grid-area: product-desc;
+  color: #4d5254;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%;
+
+  @include breakpoint(until-portrait) {
+    text-align: center;
+    font-size: 14px;
+  }
 }
 
 .strike-through {
@@ -652,6 +751,10 @@ header#main-header {
     font-weight: 300;
     line-height: 140%;
     text-transform: capitalize;
+
+    @include breakpoint(until-portrait) {
+      font-size: 16px;
+    }
   }
 
   .ordered-product-price {
@@ -661,12 +764,20 @@ header#main-header {
     justify-content: stretch;
     gap: 10px;
 
+    @include breakpoint(until-portrait) {
+      gap: 7px;
+    }
+
     .ordered-product-price {
       color: #969696;
       font-size: 16px;
       font-weight: 600;
       line-height: normal;
       text-transform: capitalize;
+
+      @include breakpoint(until-portrait) {
+        font-size: 14px;
+      }
     }
 
     .ordered-product-discount-price {
@@ -675,6 +786,10 @@ header#main-header {
       font-weight: 600;
       line-height: 140%;
       text-transform: capitalize;
+
+      @include breakpoint(until-portrait) {
+        font-size: 18px;
+      }
     }
   }
 }
@@ -693,20 +808,16 @@ header#main-header {
     line-height: normal;
     text-align: left;
     text-transform: capitalize;
+
+    @include breakpoint(until-portrait) {
+      font-size: 14px;
+    }
   }
 
   .ordered-product-in-stock-static {
     width: 16px;
     height: 16px;
   }
-}
-
-.ordered-product-desc {
-  color: #4d5254;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 140%;
 }
 
 .ordered-product-reasons {
@@ -725,10 +836,19 @@ header#main-header {
     justify-content: flex-start;
     width: 100%;
 
+    @include breakpoint(until-portrait) {
+      gap: 8px;
+    }
+
     .ordered-product-reason-static {
       width: 22px;
       height: 22px;
       flex-shrink: 0;
+
+      @include breakpoint(until-portrait) {
+        width: 16px;
+        height: 16px;
+      }
 
       img {
         width: 100%;
@@ -740,6 +860,10 @@ header#main-header {
       font-size: 16px;
       font-weight: 300;
       line-height: 160%;
+
+      @include breakpoint(until-portrait) {
+        font-size: 14px;
+      }
 
       span {
         color: #4d5254;
@@ -770,6 +894,10 @@ header#main-header {
     font-size: 16px;
     font-weight: 300;
     line-height: 140%;
+
+    @include breakpoint(until-portrait) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -792,21 +920,45 @@ header#main-header {
     gap: 19px;
     align-items: center;
     justify-content: center;
+
+    @include breakpoint(until-portrait) {
+      font-size: 14px;
+      gap: 15px;
+    }
   }
 }
 
 .ordered-product-discount-claim-perks {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: stretch;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'free-text ssl-text cards';
   width: 100%;
-  padding: 8px 0;
+  padding: 8px 16px;
   border-radius: 4px;
   border: 1px solid #cfcfcf;
+  row-gap: 0;
+  column-gap: 16px;
+  text-align: left;
+
+  @include breakpoint(until-portrait) {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'free-text ssl-text'
+      'cards cards';
+    row-gap: 12px;
+  }
+
+  .perks-free-shipping {
+    grid-area: free-text;
+
+    @include breakpoint(until-desktop) {
+      text-align: center;
+    }
+  }
 
   .perks-free-item {
-    padding: 0 16px;
     color: #4d5254;
     font-size: 12px;
     font-weight: 300;
@@ -827,6 +979,18 @@ header#main-header {
 
     &:last-child {
       &::before {
+        right: unset;
+        left: 0;
+
+        @include breakpoint(until-portrait) {
+          height: 1px;
+          width: 100%;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      &::before {
         display: none;
       }
     }
@@ -835,8 +999,9 @@ header#main-header {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: stretch;
+      justify-content: center;
       gap: 10px;
+      grid-area: ssl-text;
     }
   }
 
@@ -844,8 +1009,17 @@ header#main-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: stretch;
+    justify-content: flex-end;
     gap: 2px;
+    grid-area: cards;
+
+    @include breakpoint(until-desktop) {
+      justify-content: center;
+    }
+
+    @include breakpoint(until-portrait) {
+      padding-top: 12px;
+    }
 
     .perks-payment-method-static-wrapper {
       width: 24px;
@@ -890,23 +1064,41 @@ header#main-header {
     line-height: normal;
     text-decoration-line: underline;
     text-transform: uppercase;
+
+    @include breakpoint(until-portrait) {
+      font-size: 14px;
+    }
   }
 }
 
 .ordered-product-gurantee {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 16px;
   width: 100%;
   text-align: left;
 
+  @include breakpoint(until-desktop) {
+    align-items: center;
+  }
+
+  @include breakpoint(until-mobile) {
+    align-items: flex-start;
+  }
+
   .ordered-product-gurantee-static-wrapper {
     width: 88px;
     flex-shrink: 0;
+
+    @include breakpoint(until-portrait) {
+      width: 48px;
+    }
+
     img {
       width: 100%;
+      height: auto;
     }
   }
 
@@ -917,6 +1109,10 @@ header#main-header {
     font-weight: 300;
     line-height: 140%;
     display: block;
+
+    @include breakpoint(until-portrait) {
+      font-size: 12px;
+    }
 
     .ordered-product-gurantee-desc-bold {
       font-weight: 700;

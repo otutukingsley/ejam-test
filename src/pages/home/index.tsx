@@ -275,9 +275,7 @@ const Home = () => {
             </>
           </div>
           <div className="ordered-product-container">
-            
             <div className="ordered-product-grid">
-
               <div className="image-area">
                 <Image
                   alt="clarifon ordered product image"
@@ -334,7 +332,6 @@ const Home = () => {
                 )) }
               </ul>
 
-
               <div className="title-area">
                 <span className="title-blue-text one-time">one time only</span>{ ' ' }
                 <span className="title-default-text">
@@ -344,17 +341,18 @@ const Home = () => {
                 <span className="title-default-text">($84.00 total!)</span>
               </div>
 
-
               <div className="details-area">
                 <div className="ordered-product-details-wrapper">
-                  <div className="ordered-product-image-wrapper">
+
+                  <div className="ordered-product-image-wrapper product-image-area">
                     <Image
                       alt="ordered product"
                       src={ orderedProduct }
                       className="ordered-product-image-static"
                     />
                   </div>
-                  <div className="ordered-product-details">
+
+                  <div className="product-details-area">
                     <div className="ordered-product-name-price">
                       <div className="ordered-product-name">
                         Clarifion Air Ionizer
@@ -383,11 +381,13 @@ const Home = () => {
                         12 left in Stock
                       </span>
                     </div>
-                    <div className="ordered-product-desc">
-                      Simply plug a Clarifion into any standard outlet and
-                      replace bulky, expensive air purifiers with a simple.
-                    </div>
                   </div>
+
+                  <div className="ordered-product-desc product-desc-area">
+                    Simply plug a Clarifion into any standard outlet and replace
+                    bulky, expensive air purifiers with a simple.
+                  </div>
+
                 </div>
                 <ul className="ordered-product-reasons">
                   { reasons.map(reason => (
@@ -428,7 +428,7 @@ const Home = () => {
                       />
                     </button>
                     <div className="ordered-product-discount-claim-perks">
-                      <div className="perks-free-shipping discount-claim-perks-text perks-free-item">
+                      <div className="perks-free-shipping perks-free-item">
                         Free shipping
                       </div>
                       <div className="ssl-encryption perks-free-item">
@@ -481,7 +481,6 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </PageContainer>
