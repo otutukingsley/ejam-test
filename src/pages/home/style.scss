@@ -432,51 +432,66 @@ header#main-header {
 }
 
 .ordered-product-grid {
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'image title'
+    'image details'
+    'reviews details';
+  row-gap: 20px;
+  column-gap: 40px;
   text-align: left;
-  gap: 40px;
-  grid-gap: 40px;
+  width: 100%;
+}
 
-  .ordered-product-left-grid {
+.title-area {
+  grid-area: title;
+  text-transform: capitalize;
+  font-size: 32px;
+  line-height: 140%;
+  font-weight: 300;
+
+  .title-blue-text {
+    color: #2c7ef8;
+
+    &.one-time {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.details-area {
+  grid-area: details;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  grid-gap: 20px;
+}
+
+.image-area {
+  grid-area: image;
+  width: 100%;
+  max-width: 575px;
+  margin: 0 auto 0 0;
+
+  .clarifon-ordered-product-static {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.reviews-area {
+  grid-area: reviews;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-    grid-gap: 24px;
-
-    .order-product-left-grid-image-wrapper {
-      width: 100%;
-      max-width: 575px;
-      margin: 0 auto 0 0;
-
-      .clarifon-ordered-product-static {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .order-product-left-grid-reviews-wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  .ordered-product-right-grid {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 32px;
-    grid-gap: 32px;
-  }
+    justify-content: center;
+  
 }
 
 .customer-review-card {
@@ -583,21 +598,6 @@ header#main-header {
 
   li {
     color: #fbbc04;
-  }
-}
-
-.ordered-product-right-grid-title {
-  text-transform: capitalize;
-  font-size: 32px;
-  line-height: 140%;
-  font-weight: 300;
-
-  .title-blue-text {
-    color: #2c7ef8;
-
-    &.one-time {
-      text-transform: uppercase;
-    }
   }
 }
 

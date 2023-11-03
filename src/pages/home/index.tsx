@@ -275,74 +275,77 @@ const Home = () => {
             </>
           </div>
           <div className="ordered-product-container">
+            
             <div className="ordered-product-grid">
-              <div className="ordered-product-left-grid">
-                <div className="order-product-left-grid-image-wrapper">
-                  <Image
-                    alt="clarifon ordered product image"
-                    src={ clarifonChargerImg }
-                    className="clarifon-ordered-product-static"
-                  />
-                </div>
-                <ul className="order-product-left-grid-reviews-wrapper">
-                  { customerReviews.map(review => (
-                    <li key={ review.id } className="customer-review-card">
-                      <div className="customer-review-details-wrapper">
-                        <div className="customer-image-wrapper">
-                          <Image
-                            alt="customer image"
-                            src={ review.image }
-                            className="customer-image-static"
-                          />
-                        </div>
 
-                        <div className="customer-review-details">
-                          <ul className="review-rating">
-                            { Array.from({ length: 5 }, (_, index) => (
-                              <li key={ index }>
-                                { index < review.rating ? '★' : '☆' }
-                              </li>
-                            )) }
-                          </ul>
-                          <div className="customer-review-name-verified">
-                            <div className="customer-review-name">
-                              { review.name }
-                            </div>
-                            { review.verified && (
-                              <div className="verified-badge">
-                                <span className="verified-badge-icon">
-                                  <Image
-                                    alt="verified batch"
-                                    src={ verifiedIco }
-                                    className="verified-image-static"
-                                  />
-                                </span>
-                                <span className="verified-badge-text">
-                                  Verified Customer
-                                </span>
-                              </div>
-                            ) }
+              <div className="image-area">
+                <Image
+                  alt="clarifon ordered product image"
+                  src={ clarifonChargerImg }
+                  className="clarifon-ordered-product-static"
+                />
+              </div>
+
+              <ul className="reviews-area">
+                { customerReviews.map(review => (
+                  <li key={ review.id } className="customer-review-card">
+                    <div className="customer-review-details-wrapper">
+                      <div className="customer-image-wrapper">
+                        <Image
+                          alt="customer image"
+                          src={ review.image }
+                          className="customer-image-static"
+                        />
+                      </div>
+
+                      <div className="customer-review-details">
+                        <ul className="review-rating">
+                          { Array.from({ length: 5 }, (_, index) => (
+                            <li key={ index }>
+                              { index < review.rating ? '★' : '☆' }
+                            </li>
+                          )) }
+                        </ul>
+                        <div className="customer-review-name-verified">
+                          <div className="customer-review-name">
+                            { review.name }
                           </div>
+                          { review.verified && (
+                            <div className="verified-badge">
+                              <span className="verified-badge-icon">
+                                <Image
+                                  alt="verified batch"
+                                  src={ verifiedIco }
+                                  className="verified-image-static"
+                                />
+                              </span>
+                              <span className="verified-badge-text">
+                                Verified Customer
+                              </span>
+                            </div>
+                          ) }
                         </div>
                       </div>
-                      <div className="customer-review-comment">
-                        &#34;{ review.comment }&#34;
-                      </div>
-                    </li>
-                  )) }
-                </ul>
+                    </div>
+                    <div className="customer-review-comment">
+                      &#34;{ review.comment }&#34;
+                    </div>
+                  </li>
+                )) }
+              </ul>
+
+
+              <div className="title-area">
+                <span className="title-blue-text one-time">one time only</span>{ ' ' }
+                <span className="title-default-text">
+                  special price for 6 extra Clarifion for only
+                </span>{ ' ' }
+                <span className="title-blue-text">$14 each</span>{ ' ' }
+                <span className="title-default-text">($84.00 total!)</span>
               </div>
-              <div className="ordered-product-right-grid">
-                <div className="ordered-product-right-grid-title">
-                  <span className="title-blue-text one-time">
-                    one time only
-                  </span>{ ' ' }
-                  <span className="title-default-text">
-                    special price for 6 extra Clarifion for only
-                  </span>{ ' ' }
-                  <span className="title-blue-text">$14 each</span>{ ' ' }
-                  <span className="title-default-text">($84.00 total!)</span>
-                </div>
+
+
+              <div className="details-area">
                 <div className="ordered-product-details-wrapper">
                   <div className="ordered-product-image-wrapper">
                     <Image
@@ -478,6 +481,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </PageContainer>
@@ -488,7 +492,7 @@ const Home = () => {
           <div className="footer-wrapper">
             <div className="footer-copyright">
               <div className="footer-copyright-dated">Copyright (c) 2023</div>
-              <div className='footer-separator-pipe'></div>
+              <div className="footer-separator-pipe"></div>
               <div className="footer-copyright-email">
                 chineduotutu3@gmail.com
               </div>
