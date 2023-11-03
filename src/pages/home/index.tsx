@@ -31,6 +31,7 @@ import opayIcon from './assets/opay.svg';
 import googlepayIcon from './assets/google-pay.svg';
 import paypalIcon from './assets/paypal.svg';
 import orderGuranteeIcon from './assets/guarantee-icon.svg';
+import whiteLock from './assets/white-lock.svg';
 
 const ejamHeaderContent = [
   {
@@ -487,6 +488,7 @@ const Home = () => {
           <div className="footer-wrapper">
             <div className="footer-copyright">
               <div className="footer-copyright-dated">Copyright (c) 2023</div>
+              <div className='footer-separator-pipe'></div>
               <div className="footer-copyright-email">
                 chineduotutu3@gmail.com
               </div>
@@ -495,7 +497,7 @@ const Home = () => {
               <div className="ssl-encryption">
                 <Image
                   alt="ssl icon"
-                  src={ padLock }
+                  src={ whiteLock }
                   className="ssl-icon-image-static"
                 />
                 <span className="discount-claim-perks-text">
