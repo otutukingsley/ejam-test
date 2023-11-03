@@ -1,8 +1,8 @@
-import React, { useCallback, useRef } from 'react';
-import PageContainer from 'components/Container/Container';
+import React, { useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
-import classnames from 'classnames';
 import Link from 'next/link';
+import classnames from 'classnames';
+import PageContainer from 'components/Container/Container';
 
 import guranteeIcon from './assets/ejam-checkmark-starburst.svg';
 import deliveryIcon from './assets/ejam-truck-light.svg';
@@ -14,6 +14,15 @@ import clarifonIcon from './assets/clarifon-logo.svg';
 import notionIcon from './assets/notion-logo.svg';
 import mcfeeIcon from './assets/mcfee-logo.svg';
 import checkMark from './assets/check-mark.svg';
+import clarifonChargerImg from './assets/clarifon-charger.png';
+import clarifonCustomerImg from './assets/clarifon-customer-image.png';
+import orderedProduct from './assets/ordered-product.png';
+import verifiedIco from './assets/verified-ico.svg';
+import stockIcon from './assets/stock-icon.svg';
+import blueCheckMark from './assets/blue-check-mark.svg';
+import percentIcon from './assets/percent-icon.svg';
+import whiteArrowRight from './assets/white-arrow-right.svg';
+import padLock from './assets/padlock.svg';
 
 const ejamHeaderContent = [
   {
@@ -38,8 +47,36 @@ const ejamHeaderContent = [
   },
 ];
 
+const customerReviews = [
+  {
+    id: 1,
+    rating: 5,
+    name: 'Ken T.',
+    verified: true,
+    comment:
+      'As soon as the Clarifions arrived I put one in my bedroom. This was late in the afternoon. When I went to the bedroom in the evening it smelled clean. When I went to bed I felt I could breathe better. Wonderful.',
+    image: clarifonCustomerImg,
+  },
+];
+
+const reasons = [
+  {
+    id: 1,
+    reason: 'Negative Ion Technology may <span>help with allergens</span> ',
+  },
+  {
+    id: 2,
+    reason: 'Designed for <span>air rejuvenation</span> ',
+  },
+  {
+    id: 3,
+    reason: '<span>Perfect for every room</span> in all types of places. ',
+  },
+];
+
 const Home = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [ productRating ] = useState(5);
 
   const handleNextClick = useCallback(() => {
     const container = scrollContainerRef.current;
@@ -188,11 +225,189 @@ const Home = () => {
                       'progress-ongoing': item.status === 'ongoing',
                     }) }
                   >
-                    Step { item.id }: { item.text }
+                    <span className="progress-indicator-step">
+                      Step { item.id }:{ ' ' }
+                    </span>{ ' ' }
+                    <span className="progress-indicator-text">{ item.text }</span>
                   </div>
                 </div>
               )) }
             </>
+          </div>
+          <div className="ordered-product-container">
+            <div className="ordered-product-grid">
+              <div className="ordered-product-left-grid">
+                <div className="order-product-left-grid-image-wrapper">
+                  <Image
+                    alt="clarifon ordered product image"
+                    src={ clarifonChargerImg }
+                    className="clarifon-ordered-product-static"
+                  />
+                </div>
+                <div className="order-product-left-grid-reviews-wrapper">
+                  <>
+                    { customerReviews.map(review => (
+                      <div key={ review.id } className="customer-review-card">
+                        <div className="customer-review-details-wrapper">
+                          <div className="customer-image-wrapper">
+                            <Image
+                              alt="customer image"
+                              src={ review.image }
+                              className="customer-image-static"
+                            />
+                          </div>
+
+                          <div className="customer-review-details">
+                            <div className="review-rating">
+                              { Array.from({ length: 5 }, (_, index) => (
+                                <span key={ index }>
+                                  { index < review.rating ? '★' : '☆' }
+                                </span>
+                              )) }
+                            </div>
+                            <div className="customer-review-name-verified">
+                              <div className="customer-review-name">
+                                { review.name }
+                              </div>
+                              { review.verified && (
+                                <div className="verified-badge">
+                                  <span className="verified-badge-icon">
+                                    <Image
+                                      alt="verified batch"
+                                      src={ verifiedIco }
+                                      className="verified-image-static"
+                                    />
+                                  </span>
+                                  <span className="verified-badge-text">
+                                    Verified Customer
+                                  </span>
+                                </div>
+                              ) }
+                            </div>
+                          </div>
+                        </div>
+                        <div className="customer-review-comment">
+                          &#34;{ review.comment }&#34;
+                        </div>
+                      </div>
+                    )) }
+                  </>
+                </div>
+              </div>
+              <div className="ordered-product-right-grid">
+                <div className="ordered-product-right-grid-title">
+                  <span className="title-blue-text one-time">
+                    one time only
+                  </span>{ ' ' }
+                  <span className="title-default-text">
+                    special price for 6 extra Clarifion for only
+                  </span>{ ' ' }
+                  <span className="title-blue-text">$14 each</span>{ ' ' }
+                  <span className="title-default-text">($84.00 total!)</span>
+                </div>
+                <div className="ordered-product-details-wrapper">
+                  <div className="ordered-product-image-wrapper">
+                    <Image
+                      alt="ordered product"
+                      src={ orderedProduct }
+                      className="ordered-product-image-static"
+                    />
+                  </div>
+                  <div className="ordered-product-details">
+                    <div className="ordered-product-name-price">
+                      <div className="ordered-product-name">
+                        Clarifion Air Ionizer
+                      </div>
+                      <div className="ordered-product-price">
+                        <span className="ordered-product-price strike-through">
+                          $180
+                        </span>
+                        <span className="ordered-product-discount-price">
+                          $84
+                        </span>
+                      </div>
+                    </div>
+                    <div className="review-rating">
+                      { Array.from({ length: 5 }, (_, index) => (
+                        <span key={ index }>
+                          { index < productRating ? '★' : '☆' }
+                        </span>
+                      )) }
+                    </div>
+                    <div className="ordered-product-in-stock">
+                      <Image
+                        alt="stock icon"
+                        src={ stockIcon }
+                        className="ordered-product-in-stock-static"
+                      />
+                      <span className="ordered-product-in-stock-text">
+                        12 left in Stock
+                      </span>
+                    </div>
+                    <div className="ordered-product-desc">
+                      Simply plug a Clarifion into any standard outlet and
+                      replace bulky, expensive air purifiers with a simple.
+                    </div>
+                  </div>
+                </div>
+                <div className="ordered-product-reasons">
+                  { reasons.map(reason => (
+                    <div
+                      key={ reason.id }
+                      className="ordered-product-reason-item"
+                    >
+                      <Image
+                        alt="ordered product reason check"
+                        src={ blueCheckMark }
+                        className="ordered-product-reason-static"
+                      />
+                      <div
+                        dangerouslySetInnerHTML={ { __html: reason.reason } }
+                        className="ordered-product-reason-text"
+                      />
+                    </div>
+                  )) }
+                </div>
+                <div className="ordered-product-discount-details">
+                  <Image
+                    alt="discount icon"
+                    src={ percentIcon }
+                    className="percent-icon-static"
+                  />
+                  <div className="ordered-product-discount-desc">
+                    Save<span className="blue-text"> 53%</span> and get
+                    <span className="blue-text"> 6 extra Clarifision</span> for
+                    only
+                    <span className="blue-text"> $14 Each</span>.
+                  </div>
+                </div>
+                <div className="ordered-product-discount-claim">
+                  <button className="btn btn-xl-green">
+                    yes - claim my discount
+                    <Image
+                      alt="claim discount arrow right"
+                      src={ whiteArrowRight }
+                      className="claim-discount-static"
+                    />
+                  </button>
+                  <div className="ordered-product-discount-claim-perks">
+                    <div className="perks-free-shipping discount-claim-perks-text">
+                      Free shipping
+                    </div>
+                    <div className="perks-ssl-encryption">
+                      <Image
+                        alt="ssl icon"
+                        src={ padLock }
+                        className="ssl-icon-image-static"
+                      />
+                      <span className="discount-claim-perks-text">
+                        Secure 256-bit SSL encryption
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </PageContainer>
       </section>
